@@ -1,7 +1,5 @@
-/* Import Font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-/* CSS Variables untuk Light/Dark Mode */
 :root {
     --bg-color: #ffffff;
     --text-color: #1a1a1a;
@@ -21,7 +19,6 @@ body.dark-mode {
     --shadow-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Reset dan Pengaturan Dasar */
 * {
     margin: 0;
     padding: 0;
@@ -36,7 +33,10 @@ body {
     overflow-x: hidden;
 }
 
-/* === BAGIAN DESKTOP === */
+main {
+    width: 100%;
+    overflow-x: hidden;
+}
 
 .navbar {
     display: flex;
@@ -118,13 +118,13 @@ body {
     display: none;
 }
 
-/* Konten Utama */
+/* Hero Section */
 .hero-section {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 4rem 5% 2rem; /* Sebelumnya: 6rem 5% 4rem */
+    padding: 5rem 5% 2rem;
     gap: 2rem;
     animation: zoomIn 0.8s ease-out forwards;
 }
@@ -147,10 +147,9 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     opacity: 0;
-    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
-    transform: scale(1.15);
+    transition: opacity 0.8s ease-in-out;
 }
 
 .hero-photo.active {
@@ -163,14 +162,14 @@ body {
 }
 
 .hero-title {
-    font-size: 2.8rem;
+    font-size: 2.5rem;
     font-weight: 700;
     line-height: 1.3;
 }
 
 .hero-subtitle {
-    font-size: 1.1rem;
-    margin: 1rem 0 2rem;
+    font-size: 1rem;
+    margin: 1rem 0 1.5rem;
     max-width: 500px;
     line-height: 1.7;
 }
@@ -217,11 +216,11 @@ body {
     border: 1px solid var(--shadow-color);
 }
 
+/* Portfolio Section */
 .portfolio-section {
-    padding: 3rem 5% 5rem; /* Lebih proporsional untuk desktop */
+    padding: 2rem 5% 4rem;
     background-color: var(--secondary-btn-bg);
 }
-
 
 .container {
     max-width: 1200px;
@@ -313,16 +312,11 @@ body.dark-mode .section-subtitle {
     transform: translateY(0);
 }
 
-/* =================================================================== */
-/* ===             PENGATURAN TAMPILAN MOBILE                === */
-/* =================================================================== */
-
+/* Mobile */
 @media (max-width: 768px) {
-    /* PERBAIKAN: Mengatur ulang padding Hero Section untuk mobile */
     .hero-section {
         flex-direction: column;
         text-align: center;
-        /* Top: 6rem (lebih dekat ke navbar), Horizontal: 1.5rem (nilai tetap), Bottom: 4rem */
         padding: 6rem 1.5rem 4rem;
     }
 
@@ -330,16 +324,12 @@ body.dark-mode .section-subtitle {
         font-size: 2.2rem;
         margin-bottom: 1rem;
     }
-    
+
     .hero-image-container {
         height: 55vh;
         width: 100%;
         max-width: 100%;
         margin-bottom: 2rem;
-    }
-
-    .hero-photo {
-        transform: scale(1.4);
     }
 
     .hero-cta {
@@ -351,7 +341,6 @@ body.dark-mode .section-subtitle {
         font-size: 0.9rem;
     }
 
-    /* PERBAIKAN: Mengurangi padding atas Portfolio Section di mobile */
     .portfolio-section {
         padding-top: 4rem;
     }
@@ -378,11 +367,11 @@ body.dark-mode .section-subtitle {
     .hamburger-btn .bar:last-child {
         width: 16px;
     }
-    
+
     .navbar-nav {
         display: none;
     }
-    
+
     .navbar-nav.active {
         display: block;
         position: absolute;
@@ -398,7 +387,7 @@ body.dark-mode .section-subtitle {
         max-height: 500px;
         transition: max-height 0.4s ease-out;
     }
-    
+
     .navbar-nav.active ul {
         flex-direction: column;
         align-items: flex-start;
@@ -417,9 +406,4 @@ body.dark-mode .section-subtitle {
     .navbar-nav.active a:hover {
         background-color: var(--shadow-color);
     }
-}
-
-main {
-    width: 100%;
-    overflow-x: hidden;
 }
