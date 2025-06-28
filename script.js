@@ -17,13 +17,13 @@ document.addEventListener('DOMContentLoaded', function() {
             photos[currentPhotoIndex].classList.remove('active');
             currentPhotoIndex = (currentPhotoIndex + 1) % photos.length;
             photos[currentPhotoIndex].classList.add('active');
-        }, 4000); // Ganti gambar setiap 4 detik
+        }, 4000);
     }
 
     // Fungsi untuk Typing Effect
     const typingElement = document.getElementById('typing-effect');
     if (typingElement) {
-        const professions = ['Photographer', 'Retoucher', 'Designer']; // Versi Inggris
+        const professions = ['Fotografer', 'Retoucher', 'Desainer']; // Versi Indonesia
         let professionIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
