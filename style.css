@@ -10,6 +10,7 @@
     --secondary-btn-text: #333;
     --navbar-bg: rgba(255, 255, 255, 0.75);
     --shadow-color: rgba(0, 0, 0, 0.1);
+    --switch-bg: #e9ecef;
 }
 
 body.dark-mode {
@@ -19,6 +20,7 @@ body.dark-mode {
     --secondary-btn-text: #e0e0e0;
     --navbar-bg: rgba(18, 18, 18, 0.75);
     --shadow-color: rgba(255, 255, 255, 0.1);
+    --switch-bg: #343a40;
 }
 
 /* Reset dan Pengaturan Dasar */
@@ -40,10 +42,6 @@ body {
 
 /* Navbar Utama */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 5%;
     position: fixed;
     top: 0;
     left: 0;
@@ -51,8 +49,18 @@ body {
     z-index: 1000;
     background-color: var(--navbar-bg);
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px); /* Dukungan untuk Safari */
+    -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--shadow-color);
+}
+
+/* UPGRADE: Kontainer baru agar navbar tidak full-width */
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px; /* Lebar maksimal konten navbar */
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
 }
 
 .navbar-logo a {
@@ -60,12 +68,14 @@ body {
     font-size: 1.5rem;
     text-decoration: none;
     color: var(--text-color);
+    white-space: nowrap; /* Mencegah nama terpotong */
 }
 
 .navbar-nav ul {
     list-style: none;
     display: flex;
-    gap: 2rem;
+    /* UPGRADE: Jarak antar menu lebih rapat */
+    gap: 1.5rem;
 }
 
 .navbar-nav a {
@@ -73,6 +83,8 @@ body {
     color: var(--text-color);
     font-weight: 400;
     transition: color 0.2s;
+    /* UPGRADE: Ukuran font menu lebih kecil */
+    font-size: 0.9rem;
 }
 
 .navbar-nav a:hover {
@@ -86,29 +98,45 @@ body {
     height: 40px;
 }
 
-.lang-toggle a {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: 400;
-    font-size: 0.9rem;
-    padding: 0.3rem 0.6rem;
-    border: 1px solid var(--shadow-color);
+/* UPGRADE: Gaya baru untuk Language Switch */
+.lang-switch-container {
+    background-color: var(--switch-bg);
     border-radius: 20px;
-    transition: background-color 0.2s;
+    padding: 4px;
+    display: flex;
+    position: relative;
+    border: 1px solid var(--shadow-color);
+}
+.lang-option {
+    padding: 0.1rem 0.8rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-color);
+    opacity: 0.6;
+    text-decoration: none;
+    z-index: 2;
+    transition: opacity 0.3s;
+}
+.lang-option.active {
+    opacity: 1;
+}
+.lang-switch-container::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: calc(50% - 4px);
+    height: calc(100% - 8px);
+    background-color: var(--bg-color);
+    border-radius: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1;
+}
+.lang-switch-container.lang-id-active::before {
+    transform: translateX(100%);
 }
 
-.lang-toggle a:hover {
-    background-color: var(--shadow-color);
-}
-
-.lang-toggle img {
-    width: 18px;
-    height: auto;
-    border-radius: 50%;
-}
 
 .theme-toggle {
     cursor: pointer;
@@ -117,17 +145,24 @@ body {
 }
 
 .hamburger-btn {
-    display: none; 
+    display: none;
 }
 
 /* Konten Utama */
 .hero-section {
     min-height: 100vh;
     display: flex;
-    align-items: center;
     justify-content: center;
-    padding: 6rem 5% 2rem;
+    padding: 0 5%; /* Hapus padding-top/bottom, biarkan flex yang mengatur */
     gap: 2rem;
+    /* PERBAIKAN: Konten rata atas, dengan padding atas besar untuk memberi ruang dari navbar */
+    align-items: flex-start;
+    padding-top: 140px; 
+}
+
+@keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
 }
 
 .hero-image-container {
@@ -218,11 +253,14 @@ body {
 /* =================================================================== */
 
 @media (max-width: 768px) {
-    /* Konten utama di mobile */
+    .navbar-container {
+        padding: 1rem 1.5rem;
+    }
+
     .hero-section {
         flex-direction: column;
         text-align: center;
-        padding-top: 8rem;
+        padding: 8rem 1.5rem 4rem;
     }
 
     .hero-title {
@@ -249,10 +287,13 @@ body {
         padding: 0.6rem 1.4rem;
         font-size: 0.9rem;
     }
+    
+    /* Navigasi mobile */
+    .navbar-nav { display: none; }
+    .hamburger-btn { display: flex; }
+    .lang-switch-container { display: none; } /* Switch bahasa juga disembunyikan di mobile */
 
-    /* Tampilkan tombol hamburger di mobile */
     .hamburger-btn {
-        display: flex;
         flex-direction: column;
         align-items: flex-end;
         gap: 5px;
@@ -273,13 +314,7 @@ body {
     .hamburger-btn .bar:last-child {
         width: 16px;
     }
-    
-    /* Sembunyikan navigasi desktop */
-    .navbar-nav {
-        display: none;
-    }
-    
-    /* Atur gaya untuk menu mobile SAAT AKTIF */
+
     .navbar-nav.active {
         display: block;
         position: absolute;
