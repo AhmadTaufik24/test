@@ -32,6 +32,8 @@ body {
 }
 
 /* === BAGIAN DESKTOP === */
+
+/* Navbar Utama */
 .navbar {
     position: fixed;
     top: 0; left: 0;
@@ -42,21 +44,24 @@ body {
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--shadow-color);
 }
+
 .navbar-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 1rem 1.5rem;
+    padding: 0.8rem 1.5rem;
 }
+
 .navbar-left, .navbar-right, .navbar-toggles {
     display: flex;
     align-items: center;
 }
-.navbar-left { gap: 3rem; }
+.navbar-left { gap: 2.5rem; } /* Jarak logo ke menu */
 .navbar-right { gap: 1.5rem; }
-.navbar-toggles { gap: 1rem; }
+.navbar-toggles { gap: 1.25rem; }
+
 .navbar-logo a {
     font-weight: 500;
     font-size: 1.5rem;
@@ -64,6 +69,7 @@ body {
     color: var(--text-color);
     white-space: nowrap;
 }
+
 .navbar-nav ul {
     list-style: none;
     display: flex;
@@ -78,11 +84,11 @@ body {
 }
 .navbar-nav a:hover { color: var(--primary-color); }
 
-/* Language Switch Baru */
-.language-selector {
+/* Language Switch Baru (Desktop) */
+.language-selector-desktop {
     display: flex;
     align-items: center;
-    gap: 0.6rem;
+    gap: 0.75rem;
 }
 .lang-label {
     font-size: 0.9rem;
@@ -121,25 +127,51 @@ body {
     overflow: hidden;
 }
 .switch-thumb img { width: 100%; height: 100%; object-fit: cover; }
-.language-selector.lang-is-id .switch-thumb {
+.language-selector-desktop.lang-is-id .switch-thumb {
     transform: translateX(24px);
 }
 
+/* Language Toggle Sederhana (Mobile) */
+.lang-toggle-mobile {
+    display: none; /* Sembunyi di desktop */
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid var(--shadow-color);
+}
+.lang-toggle-mobile img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Theme Toggle Baru (Desktop & Mobile) */
 .theme-toggle { cursor: pointer; position: relative; }
+.icon-sun { display: none; } /* Sun disembunyikan di light mode */
+body.dark-mode .icon-moon { display: none; } /* Moon disembunyikan di dark mode */
+body.dark-mode .icon-sun { display: block; } /* Sun ditampilkan di dark mode */
+
 .hamburger-btn { display: none; }
 
 /* Konten Utama */
-.hero-section{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 5% 4rem;gap:2rem}
+.hero-section {
+    min-height: 95vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 5% 4rem; /* Jarak pas dari atas */
+    gap: 2rem;
+}
 .hero-image-container{flex:1;max-width:440px;position:relative;height:440px}.hero-photo{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .8s ease-in-out,transform .8s ease-in-out;transform:scale(1.15)}.hero-photo.active{opacity:1}.hero-text-container{flex:1.5;max-width:600px}.hero-title{font-size:2.8rem;font-weight:700;line-height:1.3}.hero-subtitle{font-size:1.1rem;margin:1rem 0 2rem;max-width:500px;line-height:1.7}#typing-effect{color:var(--primary-color)}#typing-effect::after{content:'|';animation:blink .7s infinite}@keyframes blink{50%{opacity:0}}.hero-cta{display:flex;gap:1rem}.btn{padding:.8rem 1.8rem;border-radius:8px;text-decoration:none;font-weight:600;transition:transform .2s,box-shadow .2s}.btn:hover{transform:translateY(-2px);box-shadow:0 4px 15px var(--shadow-color)}.btn-primary{background-color:var(--primary-color);color:#fff}.btn-secondary{background-color:var(--secondary-btn-bg);color:var(--secondary-btn-text);border:1px solid var(--shadow-color)}
 
 /* === PENGATURAN TAMPILAN MOBILE === */
 @media (max-width: 992px) {
     .navbar-left { gap: 1.5rem; }
-    .navbar-nav { display: none; }
-    .hamburger-btn { display: flex; }
+    .navbar-nav { display: none; } /* Sembunyikan menu teks di tablet & mobile */
+    .hamburger-btn { display: flex; } /* Tampilkan hamburger di tablet & mobile */
 }
 
 @media (max-width: 768px) {
+    .navbar-container { padding: 0.8rem 1.5rem; }
+    .language-selector-desktop { display: none; } /* Sembunyikan switch desktop */
+    .lang-toggle-mobile { display: block; } /* Tampilkan ikon bahasa mobile */
+
     .hero-section {
         flex-direction: column;
         text-align: center;
@@ -157,8 +189,7 @@ body {
     .btn { padding: 0.6rem 1.4rem; font-size: 0.9rem; }
     
     .navbar-right { gap: 1rem; }
-    .navbar-toggles { display: flex; } /* Memastikan toggle tetap ada di mobile */
-
+    
     .hamburger-btn {
         flex-direction: column;
         align-items: flex-end;
