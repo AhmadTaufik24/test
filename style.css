@@ -1,5 +1,5 @@
 /* Import Font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 
 /* CSS Variables untuk Light/Dark Mode */
 :root {
@@ -8,7 +8,7 @@
     --primary-color: #007bff;
     --secondary-btn-bg: #f0f0f0;
     --secondary-btn-text: #333;
-    --navbar-bg: rgba(255, 255, 255, 0.8);
+    --navbar-bg: rgba(255, 255, 255, 0.75);
     --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -17,7 +17,7 @@ body.dark-mode {
     --text-color: #e0e0e0;
     --secondary-btn-bg: #333333;
     --secondary-btn-text: #e0e0e0;
-    --navbar-bg: rgba(18, 18, 18, 0.8);
+    --navbar-bg: rgba(18, 18, 18, 0.75);
     --shadow-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -38,6 +38,7 @@ body {
 
 /* === BAGIAN DESKTOP === */
 
+/* Navbar Utama */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -50,6 +51,7 @@ body {
     z-index: 1000;
     background-color: var(--navbar-bg);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* Dukungan untuk Safari */
     border-bottom: 1px solid var(--shadow-color);
 }
 
@@ -115,9 +117,10 @@ body {
 }
 
 .hamburger-btn {
-    display: none;
+    display: none; 
 }
 
+/* Konten Utama */
 .hero-section {
     min-height: 100vh;
     display: flex;
@@ -125,12 +128,6 @@ body {
     justify-content: center;
     padding: 6rem 5% 2rem;
     gap: 2rem;
-    animation: zoomIn 0.8s ease-out forwards;
-}
-
-@keyframes zoomIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
 }
 
 .hero-image-container {
@@ -146,7 +143,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain; /* PERBAIKAN: Dikembalikan ke 'contain' agar tidak terpotong */
+    object-fit: contain;
     opacity: 0;
     transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
     transform: scale(1.15);
@@ -221,6 +218,7 @@ body {
 /* =================================================================== */
 
 @media (max-width: 768px) {
+    /* Konten utama di mobile */
     .hero-section {
         flex-direction: column;
         text-align: center;
@@ -233,15 +231,14 @@ body {
     }
     
     .hero-image-container {
-        height: 55vh; /* Ukuran wadah yang proporsional */
+        height: 55vh;
         width: 100%;
         max-width: 100%;
         margin-bottom: 2rem;
     }
     
-    /* PERBAIKAN: Aturan baru untuk memperbesar foto di mobile tanpa terpotong */
     .hero-photo {
-        transform: scale(1.4); /* Zoom diperbesar menjadi 1.4x khusus mobile */
+        transform: scale(1.4);
     }
 
     .hero-cta {
@@ -253,6 +250,7 @@ body {
         font-size: 0.9rem;
     }
 
+    /* Tampilkan tombol hamburger di mobile */
     .hamburger-btn {
         display: flex;
         flex-direction: column;
@@ -276,10 +274,12 @@ body {
         width: 16px;
     }
     
+    /* Sembunyikan navigasi desktop */
     .navbar-nav {
         display: none;
     }
     
+    /* Atur gaya untuk menu mobile SAAT AKTIF */
     .navbar-nav.active {
         display: block;
         position: absolute;
@@ -288,6 +288,7 @@ body {
         width: 90%;
         background-color: var(--navbar-bg);
         backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
         border-radius: 12px;
         box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         border: 1px solid var(--shadow-color);
@@ -315,4 +316,3 @@ body {
         background-color: var(--shadow-color);
     }
 }
-
