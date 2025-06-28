@@ -87,3 +87,24 @@ body.dark-mode { --bg-color: #121212; --text-color: #e0e0e0; --secondary-btn-bg:
 
 }
 
+/* ==== FORCING DESKTOP FIX ==== */
+@media (min-width: 993px) {
+  .navbar-nav {
+    display: flex !important;
+  }
+
+  .hero-section {
+    flex-direction: row !important;
+    text-align: left !important;
+  }
+
+  .hero-image-container {
+    max-width: 440px !important;
+    height: 440px !important;
+  }
+
+  .hero-photo {
+    transform: scale(1.15) !important;
+  }
+}
+
