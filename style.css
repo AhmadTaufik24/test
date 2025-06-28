@@ -124,7 +124,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 6rem 5% 4rem; /* Jarak bawah ditambah sedikit */
+    padding: 4rem 5% 2rem; /* Sebelumnya: 6rem 5% 4rem */
     gap: 2rem;
     animation: zoomIn 0.8s ease-out forwards;
 }
@@ -218,9 +218,10 @@ body {
 }
 
 .portfolio-section {
-    padding: 4rem 5%;
+    padding: 3rem 5% 5rem; /* Lebih proporsional untuk desktop */
     background-color: var(--secondary-btn-bg);
 }
+
 
 .container {
     max-width: 1200px;
@@ -416,4 +417,9 @@ body.dark-mode .section-subtitle {
     .navbar-nav.active a:hover {
         background-color: var(--shadow-color);
     }
+}
+
+main {
+    width: 100%;
+    overflow-x: hidden;
 }
