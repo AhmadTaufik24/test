@@ -1,0 +1,16 @@
+{
+  "name": "Taufik Portfolio",
+  "short_name": "Taufik",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "description": "Personal portfolio of Taufik, a creative professional.",
+  "icons": [
+    {
+      "src": "assets/icons/logo-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
