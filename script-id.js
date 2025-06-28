@@ -1,87 +1,88 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    // Fungsi untuk Light/Dark Mode Toggle
-    const themeToggle = document.getElementById('theme-toggle');
-    if (themeToggle) {
-        document.body.classList.remove('dark-mode'); 
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-        });
-    }
+// Fungsi untuk Light/Dark Mode Toggle
+const themeToggle = document.getElementById('theme-toggle');
+if (themeToggle) {
+    document.body.classList.remove('dark-mode'); 
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+    });
+}
 
-    // Fungsi untuk Image Slideshow
-    const photos = document.querySelectorAll('.hero-photo');
-    if (photos.length > 0) {
-        let currentPhotoIndex = 0;
-        setInterval(() => {
-            photos[currentPhotoIndex].classList.remove('active');
-            currentPhotoIndex = (currentPhotoIndex + 1) % photos.length;
-            photos[currentPhotoIndex].classList.add('active');
-        }, 4000);
-    }
+// Fungsi untuk Image Slideshow
+const photos = document.querySelectorAll('.hero-photo');
+if (photos.length > 0) {
+    let currentPhotoIndex = 0;
+    setInterval(() => {
+        photos[currentPhotoIndex].classList.remove('active');
+        currentPhotoIndex = (currentPhotoIndex + 1) % photos.length;
+        photos[currentPhotoIndex].classList.add('active');
+    }, 4000);
+}
 
-    // Fungsi untuk Typing Effect
-    const typingElement = document.getElementById('typing-effect');
-    if (typingElement) {
-        const professions = ['Fotografer', 'Retoucher', 'Desainer']; // Versi Indonesia
-        let professionIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        
-        function type() {
-            const currentProfession = professions[professionIndex];
-            
-            if (isDeleting) {
-                typingElement.textContent = currentProfession.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                typingElement.textContent = currentProfession.substring(0, charIndex + 1);
-                charIndex++;
-            }
+// Fungsi untuk Typing Effect
+const typingElement = document.getElementById('typing-effect');
+if (typingElement) {
+    const professions = ['Fotografer', 'Retoucher', 'Desainer'];
+    let professionIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
 
-            let typeSpeed = isDeleting ? 100 : 200;
+    function type() {
+        const currentProfession = professions[professionIndex];
 
-            if (!isDeleting && charIndex === currentProfession.length) {
-                typeSpeed = 2000;
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                professionIndex = (professionIndex + 1) % professions.length;
-                typeSpeed = 500;
-            }
-
-            setTimeout(type, typeSpeed);
+        if (isDeleting) {
+            typingElement.textContent = currentProfession.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            typingElement.textContent = currentProfession.substring(0, charIndex + 1);
+            charIndex++;
         }
-        
-        type();
-    }
-    
-    // Logika untuk membuka/menutup Dropdown Menu
-    const hamburgerBtn = document.getElementById('hamburger-btn');
-    const mobileNav = document.getElementById('mobile-nav');
 
-    if (hamburgerBtn && mobileNav) {
-        hamburgerBtn.addEventListener('click', () => {
-            mobileNav.classList.toggle('active');
-            if (mobileNav.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = '';
-            }
-        });
+        let typeSpeed = isDeleting ? 100 : 200;
+
+        if (!isDeleting && charIndex === currentProfession.length) {
+            typeSpeed = 2000;
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            professionIndex = (professionIndex + 1) % professions.length;
+            typeSpeed = 500;
+        }
+
+        setTimeout(type, typeSpeed);
     }
 
-    // Logika untuk menutup menu saat klik di luar area menu
-    document.addEventListener('click', function(event) {
-        if (mobileNav && mobileNav.classList.contains('active')) {
-            const isClickInsideMenu = mobileNav.contains(event.target);
-            const isClickOnHamburger = hamburgerBtn.contains(event.target);
-            
-            if (!isClickInsideMenu && !isClickOnHamburger) {
-                mobileNav.classList.remove('active');
-                document.body.style.overflow = '';
-            }
+    type();
+}
+
+// Logika untuk membuka/menutup Dropdown Menu
+const hamburgerBtn = document.getElementById('hamburger-btn');
+const mobileNav = document.getElementById('mobile-nav');
+
+if (hamburgerBtn && mobileNav) {
+    hamburgerBtn.addEventListener('click', () => {
+        mobileNav.classList.toggle('active');
+        if (mobileNav.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
         }
     });
+}
+
+// Logika untuk menutup menu saat klik di luar area menu
+document.addEventListener('click', function(event) {
+    if (mobileNav && mobileNav.classList.contains('active')) {
+        const isClickInsideMenu = mobileNav.contains(event.target);
+        const isClickOnHamburger = hamburgerBtn.contains(event.target);
+
+        if (!isClickInsideMenu && !isClickOnHamburger) {
+            mobileNav.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+});
 
 });
+
