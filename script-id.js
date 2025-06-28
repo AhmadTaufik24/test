@@ -84,23 +84,4 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // --- TAMBAHAN: Logika untuk Animasi Saat Scroll ---
-    const animatedElements = document.querySelectorAll('.fade-in-up');
-    if (animatedElements.length > 0) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    // observer.unobserve(entry.target); // Hapus komentar ini jika ingin animasi hanya berjalan sekali
-                }
-            });
-        }, {
-            threshold: 0.1 
-        });
-
-        animatedElements.forEach(el => {
-            observer.observe(el);
-        });
-    }
-
 });
