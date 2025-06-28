@@ -39,6 +39,7 @@ main {
 }
 
 .navbar {
+    height: 64px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -51,8 +52,8 @@ main {
     background-color: var(--navbar-bg);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--shadow-color);
-    height: 64px;
 }
+
 
 .navbar-logo a {
     font-weight: 500;
@@ -120,12 +121,11 @@ main {
 }
 
 .hero-section {
-    min-height: calc(100vh - 64px);
+    min-height: calc(100vh - 64px); /* Kurangi tinggi navbar */
+    padding: 4rem 5% 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem 5% 2rem;
-    margin-top: 64px;
     gap: 2rem;
     animation: zoomIn 0.8s ease-out forwards;
 }
