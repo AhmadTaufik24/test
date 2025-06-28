@@ -51,6 +51,7 @@ main {
     background-color: var(--navbar-bg);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--shadow-color);
+    height: 64px;
 }
 
 .navbar-logo a {
@@ -118,13 +119,13 @@ main {
     display: none;
 }
 
-/* Hero Section */
 .hero-section {
-    min-height: 100vh;
+    min-height: calc(100vh - 64px);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5rem 5% 2rem;
+    padding: 2rem 5% 2rem;
+    margin-top: 64px;
     gap: 2rem;
     animation: zoomIn 0.8s ease-out forwards;
 }
@@ -216,7 +217,6 @@ main {
     border: 1px solid var(--shadow-color);
 }
 
-/* Portfolio Section */
 .portfolio-section {
     padding: 2rem 5% 4rem;
     background-color: var(--secondary-btn-bg);
@@ -312,12 +312,12 @@ body.dark-mode .section-subtitle {
     transform: translateY(0);
 }
 
-/* Mobile */
 @media (max-width: 768px) {
     .hero-section {
         flex-direction: column;
         text-align: center;
-        padding: 6rem 1.5rem 4rem;
+        padding: 5rem 1.5rem 3rem;
+        margin-top: 64px;
     }
 
     .hero-title {
