@@ -118,12 +118,13 @@ body {
     display: none;
 }
 
+/* Konten Utama */
 .hero-section {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 6rem 5% 2rem;
+    padding: 6rem 5% 4rem; /* Jarak bawah ditambah sedikit */
     gap: 2rem;
     animation: zoomIn 0.8s ease-out forwards;
 }
@@ -146,7 +147,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain; /* PERBAIKAN: Dikembalikan ke 'contain' agar tidak terpotong */
+    object-fit: contain;
     opacity: 0;
     transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
     transform: scale(1.15);
@@ -216,15 +217,112 @@ body {
     border: 1px solid var(--shadow-color);
 }
 
+.portfolio-section {
+    padding: 4rem 5%;
+    background-color: var(--secondary-btn-bg);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: #6c757d;
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body.dark-mode .section-subtitle {
+    color: #a0a0a0;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    cursor: pointer;
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.1);
+}
+
+.portfolio-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: #fff;
+    padding: 2rem 1.5rem 1.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.portfolio-item:hover .portfolio-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.portfolio-overlay h3 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.portfolio-overlay p {
+    margin: 0.25rem 0 0;
+    font-size: 0.9rem;
+}
+
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.645, 0.045, 0.355, 1), transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.fade-in-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* =================================================================== */
 /* ===             PENGATURAN TAMPILAN MOBILE                === */
 /* =================================================================== */
 
 @media (max-width: 768px) {
+    /* PERBAIKAN: Mengatur ulang padding Hero Section untuk mobile */
     .hero-section {
         flex-direction: column;
         text-align: center;
-        padding-top: 8rem;
+        /* Top: 6rem (lebih dekat ke navbar), Horizontal: 1.5rem (nilai tetap), Bottom: 4rem */
+        padding: 6rem 1.5rem 4rem;
     }
 
     .hero-title {
@@ -233,15 +331,14 @@ body {
     }
     
     .hero-image-container {
-        height: 55vh; /* Ukuran wadah yang proporsional */
+        height: 55vh;
         width: 100%;
         max-width: 100%;
         margin-bottom: 2rem;
     }
-    
-    /* PERBAIKAN: Aturan baru untuk memperbesar foto di mobile tanpa terpotong */
+
     .hero-photo {
-        transform: scale(1.4); /* Zoom diperbesar menjadi 1.4x khusus mobile */
+        transform: scale(1.4);
     }
 
     .hero-cta {
@@ -251,6 +348,11 @@ body {
     .btn {
         padding: 0.6rem 1.4rem;
         font-size: 0.9rem;
+    }
+
+    /* PERBAIKAN: Mengurangi padding atas Portfolio Section di mobile */
+    .portfolio-section {
+        padding-top: 4rem;
     }
 
     .hamburger-btn {
@@ -314,106 +416,4 @@ body {
     .navbar-nav.active a:hover {
         background-color: var(--shadow-color);
     }
-}
-
-/* =================================================================== */
-/* ===                  GAYA SECTION PORTOFOLIO                  === */
-/* =================================================================== */
-
-.portfolio-section {
-    padding: 4rem 5%;
-    background-color: var(--secondary-btn-bg); /* Warna latar yang sedikit berbeda */
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.section-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-}
-
-.section-subtitle {
-    font-size: 1.1rem;
-    color: #6c757d; /* Warna teks sekunder */
-    margin-bottom: 3rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-body.dark-mode .section-subtitle {
-    color: #a0a0a0;
-}
-
-.portfolio-grid {
-    display: grid;
-    /* Membuat grid responsif: 3 kolom di desktop, 2 di tablet, 1 di mobile */
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 1.5rem;
-}
-
-.portfolio-item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-    cursor: pointer;
-}
-
-.portfolio-item img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-}
-
-.portfolio-item:hover img {
-    transform: scale(1.1);
-}
-
-.portfolio-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-    color: #fff;
-    padding: 2rem 1.5rem 1.5rem;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-.portfolio-item:hover .portfolio-overlay {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.portfolio-overlay h3 {
-    margin: 0;
-    font-size: 1.5rem;
-}
-
-.portfolio-overlay p {
-    margin: 0.25rem 0 0;
-    font-size: 0.9rem;
-}
-
-
-/* === Pengaturan Animasi Scroll === */
-.fade-in-up {
-    opacity: 0; /* Kondisi awal, transparan */
-    transform: translateY(40px); /* Kondisi awal, sedikit di bawah */
-    transition: opacity 0.8s cubic-bezier(0.645, 0.045, 0.355, 1), transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-
-.fade-in-up.is-visible {
-    opacity: 1; /* Kondisi akhir, terlihat */
-    transform: translateY(0); /* Kondisi akhir, di posisi asli */
 }
