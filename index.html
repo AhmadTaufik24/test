@@ -1,33 +1,21 @@
 <!DOCTYPE html>
-<!-- Bahasa diatur ke 'en' untuk English -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    
-    <!-- Meta Viewport krusial untuk tampilan responsif di mobile -->
-    <!-- Ini akan mencegah user melakukan zoom di HP, sesuai permintaanmu -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <!-- Judul halaman yang akan muncul di tab browser -->
-    <title>Taufik - Photographer, Retoucher, Designer</title>
+    <title>Taufik - Creative Portfolio</title>
+    <meta name="description" content="The official portfolio of Taufik, a creative professional specializing in photography and design.">
     
-    <!-- Deskripsi singkat untuk mesin pencari (SEO) -->
-    <meta name="description" content="Personal portfolio of Taufik, a creative professional specializing in photography, retouching, and design.">
-    
-    <!-- Link ke file-file yang akan kita buat nanti -->
-    <!-- Jangan khawatir jika file-file ini belum ada, kita akan membuatnya setelah ini -->
-    
-    <!-- Untuk PWA (Installable Web App) -->
+    <!-- Link ke file-file aset yang akan kita buat nanti -->
     <link rel="manifest" href="manifest.json">
-    <link rel="icon" href="assets/images/profile-2.png" type="image/png">
+    <link rel="icon" href="assets/img/icon.png" type="image/png">
+    <link rel="stylesheet" href="assets/css/style.css">
     
-    <!-- Untuk Font Kustom dari Google Fonts -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Ini adalah link ke file styling (CSS). Ini yang akan membuat website jadi keren. -->
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -36,42 +24,38 @@
     <!-- ======================= -->
     <header class="main-header">
         <div class="container">
-            <!-- Logo Nama -->
-            <a href="#" class="logo">Taufik</a>
+            <a href="index.html" class="logo">Taufik</a>
             
-            <!-- Navigasi Desktop (akan disembunyikan di mobile) -->
+            <!-- Navigasi Desktop -->
             <nav class="main-nav">
                 <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#journal">Journal</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <!-- LINK MENU DIARAHKAN KE EXTERNAL (GANTI # DENGAN LINK-MU) -->
+                    <li><a href="https://www.instagram.com" target="_blank">Portfolio</a></li>
+                    <li><a href="https://www.behance.net" target="_blank">Journal</a></li>
+                    <li><a href="mailto:email@example.com">Contact</a></li>
                 </ul>
             </nav>
             
-            <!-- Grup Tombol Toggle di Kanan Atas -->
-            <div class="header-toggles">
-                <!-- Toggle Bahasa: Ini adalah link biasa yang akan pindah ke file index-id.html -->
-                <a href="index-id.html" class="lang-switch" aria-label="Switch to Indonesian">
-                    <div class="switch-track">
-                        <div class="switch-thumb">🇺🇸</div>
+            <!-- Kontrol di Kanan Header (Toggle & Hamburger) -->
+            <div class="header-controls">
+                <!-- Grup untuk Toggle Bahasa dan Tema -->
+                <div class="header-toggles">
+                    <!-- Toggle Tema -->
+                    <div class="theme-switch-wrapper">
+                        <label class="theme-switch" for="theme-checkbox">
+                            <input type="checkbox" id="theme-checkbox" />
+                            <div class="slider">
+                                <span class="icon sun">🌞</span>
+                                <span class="icon moon">🌙</span>
+                            </div>
+                        </label>
                     </div>
-                </a>
-                
-                <!-- Toggle Dark/Light Mode: Ini akan dikontrol oleh JavaScript -->
-                <div class="theme-switch-wrapper">
-                    <label class="theme-switch" for="theme-checkbox">
-                        <input type="checkbox" id="theme-checkbox" />
-                        <div class="slider round">
-                            <span class="sun">🌞</span>
-                            <span class="moon">🌙</span>
-                        </div>
-                    </label>
+                    <!-- Toggle Bahasa (link ke halaman versi ID) -->
+                    <a href="index-id.html" class="lang-switch" aria-label="Switch to Indonesian">
+                        <div class="thumb">🇺🇸</div>
+                    </a>
                 </div>
-                
-                <!-- Tombol Hamburger (hanya muncul di mobile) -->
+                <!-- Tombol Hamburger untuk Menu Mobile -->
                 <button class="hamburger" id="hamburger-button" aria-label="Menu">
                     <span></span>
                     <span></span>
@@ -87,12 +71,10 @@
     <div class="mobile-menu">
         <nav>
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#journal">Journal</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <!-- Link di menu mobile juga external -->
+                <li><a href="https://www.instagram.com" target="_blank">Portfolio</a></li>
+                <li><a href="https://www.behance.net" target="_blank">Journal</a></li>
+                <li><a href="mailto:email@example.com">Contact</a></li>
             </ul>
         </nav>
     </div>
@@ -101,14 +83,12 @@
     <!-- KONTEN UTAMA HALAMAN    -->
     <!-- ======================= -->
     <main>
-        <!-- Section Hero (Profile) -->
-        <section id="home" class="hero-section">
+        <!-- Section Hero (Profile) - HANYA INI KONTENNYA UNTUK SEKARANG -->
+        <section class="hero-section">
             <div class="container hero-container">
                 
                 <!-- Kolom Gambar -->
                 <div class="hero-image-container">
-                    <!-- Ini adalah placeholder untuk gambar-gambar profilmu. -->
-                    <!-- Nantinya, JavaScript akan membuat gambar-gambar ini bergantian. -->
                     <img src="https://placehold.co/500x500/EBF4FF/3B82F6?text=Foto+1" alt="Profile picture of Taufik 1" class="profile-pic active">
                     <img src="https://placehold.co/500x500/D1FAE5/10B981?text=Foto+2" alt="Profile picture of Taufik 2" class="profile-pic">
                     <img src="https://placehold.co/500x500/FEF3C7/F59E0B?text=Foto+3" alt="Profile picture of Taufik 3" class="profile-pic">
@@ -119,22 +99,19 @@
                     <h1>Hi, I'm Taufik – I'm a <span class="typing-effect"></span></h1>
                     <p>A creative professional specializing in photography, retouching, and design, focused on delivering high-quality visual aesthetics.</p>
                     <div class="hero-buttons">
-                        <a href="#portfolio" class="btn btn-primary">View My Portfolio</a>
-                        <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                        <a href="https://www.instagram.com" target="_blank" class="btn btn-primary">View My Portfolio</a>
+                        <a href="mailto:email@example.com" class="btn btn-secondary">Contact Me</a>
                     </div>
                 </div>
             </div>
         </section>
         
-        <!-- Section lain di bawahnya hanya untuk contoh agar halaman bisa di-scroll -->
-        <section id="portfolio" style="height: 100vh; padding: 80px 0;"><div class="container"><h2>Portfolio Section</h2></div></section>
-        <section id="about" style="height: 100vh; padding: 80px 0;"><div class="container"><h2>About Section</h2></div></section>
+        <!-- KONTEN LAIN DIHAPUS, AKAN DITAMBAHKAN NANTI -->
         
     </main>
 
-    <!-- Ini adalah link ke file JavaScript utama kita. -->
-    <!-- Diletakkan di akhir <body> agar halaman dimuat lebih cepat. -->
-    <script src="main.js"></script>
+    <!-- Link ke file JavaScript yang akan kita buat -->
+    <script src="assets/js/main.js"></script>
 
 </body>
 </html>
