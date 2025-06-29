@@ -1,29 +1,21 @@
 <!DOCTYPE html>
-<!-- Bahasa diatur ke 'id' untuk Indonesia -->
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    
-    <!-- Meta Viewport yang sama untuk mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <!-- Judul halaman dalam Bahasa Indonesia -->
-    <title>Taufik - Fotografer, Retoucher, Desainer</title>
+    <title>Taufik - Portofolio Kreatif</title>
+    <meta name="description" content="Portofolio resmi Taufik, seorang profesional kreatif dengan spesialisasi di bidang fotografi dan desain.">
     
-    <!-- Deskripsi untuk SEO dalam Bahasa Indonesia -->
-    <meta name="description" content="Portofolio pribadi Taufik, seorang profesional kreatif di bidang fotografi, retouching, dan desain.">
-    
-    <!-- Link ke file-file aset tetap sama -->
+    <!-- Link aset tetap sama -->
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="assets/images/profile-2.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
     
-    <!-- Font dari Google Fonts juga tetap sama -->
+    <!-- Google Fonts tetap sama -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Menggunakan file CSS yang sama dengan halaman Inggris -->
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -32,39 +24,37 @@
     <!-- ======================= -->
     <header class="main-header">
         <div class="container">
-            <a href="#" class="logo">Taufik</a>
+            <a href="index-id.html" class="logo">Taufik</a>
             
-            <!-- Navigasi Desktop dalam Bahasa Indonesia -->
+            <!-- Navigasi Desktop -->
             <nav class="main-nav">
                 <ul>
-                    <li><a href="#home">Beranda</a></li>
-                    <li><a href="#portfolio">Portofolio</a></li>
-                    <li><a href="#about">Tentang</a></li>
-                    <li><a href="#services">Layanan</a></li>
-                    <li><a href="#journal">Jurnal</a></li>
-                    <li><a href="#contact">Kontak</a></li>
+                    <!-- Link eksternal tetap sama -->
+                    <li><a href="https://www.instagram.com" target="_blank">Portofolio</a></li>
+                    <li><a href="https://www.behance.net" target="_blank">Jurnal</a></li>
+                    <li><a href="mailto:email@example.com">Kontak</a></li>
                 </ul>
             </nav>
             
-            <div class="header-toggles">
-                <!-- Toggle Bahasa: PENTING! Link ini kembali ke index.html -->
-                <a href="index.html" class="lang-switch" aria-label="Ganti ke Bahasa Inggris">
-                    <div class="switch-track">
-                        <div class="switch-thumb">🇮🇩</div>
+            <!-- Kontrol di Kanan Header -->
+            <div class="header-controls">
+                <div class="header-toggles">
+                    <!-- Toggle Tema -->
+                    <div class="theme-switch-wrapper">
+                        <label class="theme-switch" for="theme-checkbox">
+                            <input type="checkbox" id="theme-checkbox" />
+                            <div class="slider">
+                                <span class="icon sun">🌞</span>
+                                <span class="icon moon">🌙</span>
+                            </div>
+                        </label>
                     </div>
-                </a>
-                
-                <!-- Toggle Dark/Light Mode (strukturnya sama) -->
-                <div class="theme-switch-wrapper">
-                    <label class="theme-switch" for="theme-checkbox">
-                        <input type="checkbox" id="theme-checkbox" />
-                        <div class="slider round">
-                            <span class="sun">🌞</span>
-                            <span class="moon">🌙</span>
-                        </div>
-                    </label>
+                    <!-- Toggle Bahasa (PENTING: Link kembali ke index.html) -->
+                    <a href="index.html" class="lang-switch" aria-label="Ganti ke Bahasa Inggris">
+                        <div class="thumb">🇮🇩</div>
+                    </a>
                 </div>
-                
+                <!-- Tombol Hamburger -->
                 <button class="hamburger" id="hamburger-button" aria-label="Menu">
                     <span></span>
                     <span></span>
@@ -80,12 +70,10 @@
     <div class="mobile-menu">
         <nav>
             <ul>
-                <li><a href="#home">Beranda</a></li>
-                <li><a href="#portfolio">Portofolio</a></li>
-                <li><a href="#about">Tentang</a></li>
-                <li><a href="#services">Layanan</a></li>
-                <li><a href="#journal">Jurnal</a></li>
-                <li><a href="#contact">Kontak</a></li>
+                <!-- Link di menu mobile juga eksternal -->
+                <li><a href="https://www.instagram.com" target="_blank">Portofolio</a></li>
+                <li><a href="https://www.behance.net" target="_blank">Jurnal</a></li>
+                <li><a href="mailto:email@example.com">Kontak</a></li>
             </ul>
         </nav>
     </div>
@@ -95,36 +83,32 @@
     <!-- ======================= -->
     <main>
         <!-- Section Hero (Profile) -->
-        <section id="home" class="hero-section">
+        <section class="hero-section">
             <div class="container hero-container">
                 
-                <!-- Kolom Gambar (tetap sama) -->
+                <!-- Kolom Gambar -->
                 <div class="hero-image-container">
                     <img src="https://placehold.co/500x500/EBF4FF/3B82F6?text=Foto+1" alt="Foto profil Taufik 1" class="profile-pic active">
                     <img src="https://placehold.co/500x500/D1FAE5/10B981?text=Foto+2" alt="Foto profil Taufik 2" class="profile-pic">
                     <img src="https://placehold.co/500x500/FEF3C7/F59E0B?text=Foto+3" alt="Foto profil Taufik 3" class="profile-pic">
                 </div>
 
-                <!-- Kolom Teks (diterjemahkan ke Bahasa Indonesia) -->
+                <!-- Kolom Teks (Diterjemahkan) -->
                 <div class="hero-text-container">
                     <h1>Hai, saya Taufik – seorang <span class="typing-effect"></span></h1>
                     <p>Seorang profesional kreatif dengan spesialisasi di bidang fotografi, retouching, dan desain, yang berfokus pada estetika visual berkualitas tinggi.</p>
                     <div class="hero-buttons">
-                        <a href="#portfolio" class="btn btn-primary">Lihat Portofolio</a>
-                        <a href="#contact" class="btn btn-secondary">Hubungi Saya</a>
+                        <a href="https://www.instagram.com" target="_blank" class="btn btn-primary">Lihat Portofolio</a>
+                        <a href="mailto:email@example.com" class="btn btn-secondary">Hubungi Saya</a>
                     </div>
                 </div>
             </div>
         </section>
         
-        <!-- Section lain di bawahnya (diterjemahkan) -->
-        <section id="portfolio" style="height: 100vh; padding: 80px 0;"><div class="container"><h2>Bagian Portofolio</h2></div></section>
-        <section id="about" style="height: 100vh; padding: 80px 0;"><div class="container"><h2>Bagian Tentang</h2></div></section>
-        
     </main>
 
-    <!-- Menggunakan file JavaScript yang sama -->
-    <script src="assets/js/main.js"></script>
+    <!-- Link ke file JavaScript yang sama -->
+    <script src="main.js"></script>
 
 </body>
 </html>
