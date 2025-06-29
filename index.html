@@ -1,29 +1,45 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<!-- Bahasa diatur ke 'en' untuk English -->
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    
+    <!-- Meta Viewport krusial untuk tampilan responsif di mobile -->
+    <!-- Ini akan mencegah user melakukan zoom di HP, sesuai permintaanmu -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
+    <!-- Judul halaman yang akan muncul di tab browser -->
     <title>Taufik - Photographer, Retoucher, Designer</title>
     
+    <!-- Deskripsi singkat untuk mesin pencari (SEO) -->
     <meta name="description" content="Personal portfolio of Taufik, a creative professional specializing in photography, retouching, and design.">
     
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#ffffff">
+    <!-- Link ke file-file yang akan kita buat nanti -->
+    <!-- Jangan khawatir jika file-file ini belum ada, kita akan membuatnya setelah ini -->
     
+    <!-- Untuk PWA (Installable Web App) -->
+    <link rel="manifest" href="manifest.json">
     <link rel="icon" href="assets/img/icon.png" type="image/png">
     
+    <!-- Untuk Font Kustom dari Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     
+    <!-- Ini adalah link ke file styling (CSS). Ini yang akan membuat website jadi keren. -->
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
+    <!-- ======================= -->
+    <!-- BAGIAN HEADER (ATAS)    -->
+    <!-- ======================= -->
     <header class="main-header">
         <div class="container">
+            <!-- Logo Nama -->
             <a href="#" class="logo">Taufik</a>
+            
+            <!-- Navigasi Desktop (akan disembunyikan di mobile) -->
             <nav class="main-nav">
                 <ul>
                     <li><a href="#home">Home</a></li>
@@ -34,13 +50,17 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
+            
+            <!-- Grup Tombol Toggle di Kanan Atas -->
             <div class="header-toggles">
+                <!-- Toggle Bahasa: Ini adalah link biasa yang akan pindah ke file index-id.html -->
                 <a href="index-id.html" class="lang-switch" aria-label="Switch to Indonesian">
                     <div class="switch-track">
                         <div class="switch-thumb">🇺🇸</div>
                     </div>
                 </a>
                 
+                <!-- Toggle Dark/Light Mode: Ini akan dikontrol oleh JavaScript -->
                 <div class="theme-switch-wrapper">
                     <label class="theme-switch" for="theme-checkbox">
                         <input type="checkbox" id="theme-checkbox" />
@@ -51,6 +71,7 @@
                     </label>
                 </div>
                 
+                <!-- Tombol Hamburger (hanya muncul di mobile) -->
                 <button class="hamburger" id="hamburger-button" aria-label="Menu">
                     <span></span>
                     <span></span>
@@ -60,6 +81,9 @@
         </div>
     </header>
 
+    <!-- ================================= -->
+    <!-- BAGIAN MENU MOBILE (TERSEMBUNYI)  -->
+    <!-- ================================= -->
     <div class="mobile-menu">
         <nav>
             <ul>
@@ -73,16 +97,25 @@
         </nav>
     </div>
 
+    <!-- ======================= -->
+    <!-- KONTEN UTAMA HALAMAN    -->
+    <!-- ======================= -->
     <main>
+        <!-- Section Hero (Profile) -->
         <section id="home" class="hero-section">
             <div class="container hero-container">
-                <div class="hero-image-container animate-on-scroll">
+                
+                <!-- Kolom Gambar -->
+                <div class="hero-image-container">
+                    <!-- Ini adalah placeholder untuk gambar-gambar profilmu. -->
+                    <!-- Nantinya, JavaScript akan membuat gambar-gambar ini bergantian. -->
                     <img src="https://placehold.co/500x500/EBF4FF/3B82F6?text=Foto+1" alt="Profile picture of Taufik 1" class="profile-pic active">
                     <img src="https://placehold.co/500x500/D1FAE5/10B981?text=Foto+2" alt="Profile picture of Taufik 2" class="profile-pic">
                     <img src="https://placehold.co/500x500/FEF3C7/F59E0B?text=Foto+3" alt="Profile picture of Taufik 3" class="profile-pic">
                 </div>
 
-                <div class="hero-text-container animate-on-scroll">
+                <!-- Kolom Teks -->
+                <div class="hero-text-container">
                     <h1>Hi, I'm Taufik – I'm a <span class="typing-effect"></span></h1>
                     <p>A creative professional specializing in photography, retouching, and design, focused on delivering high-quality visual aesthetics.</p>
                     <div class="hero-buttons">
@@ -93,15 +126,15 @@
             </div>
         </section>
         
-        <section id="portfolio" style="height: 100vh; padding-top: 80px;"><div class="container"><h2>Portfolio Section</h2></div></section>
-        <section id="about" style="height: 100vh; padding-top: 80px;"><div class="container"><h2>About Section</h2></div></section>
-        <section id="services" style="height: 100vh; padding-top: 80px;"><div class="container"><h2>Services Section</h2></div></section>
-        <section id="journal" style="height: 100vh; padding-top: 80px;"><div class="container"><h2>Journal Section</h2></div></section>
-        <section id="contact" style="height: 100vh; padding-top: 80px;"><div class="container"><h2>Contact Section</h2></div></section>
+        <!-- Section lain di bawahnya hanya untuk contoh agar halaman bisa di-scroll -->
+        <section id="portfolio" style="height: 100vh; padding: 80px 0;"><div class="container"><h2>Portfolio Section</h2></div></section>
+        <section id="about" style="height: 100vh; padding: 80px 0;"><div class="container"><h2>About Section</h2></div></section>
+        
     </main>
-    
-    <button id="scrollToTopBtn" title="Go to top">↑</button>
 
+    <!-- Ini adalah link ke file JavaScript utama kita. -->
+    <!-- Diletakkan di akhir <body> agar halaman dimuat lebih cepat. -->
     <script src="assets/js/main.js"></script>
+
 </body>
 </html>
