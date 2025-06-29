@@ -1,77 +1,130 @@
-<!DOCTYPE html><html lang="id">
+<!DOCTYPE html>
+<!-- Bahasa diatur ke 'id' untuk Indonesia -->
+<html lang="id">
 <head>
     <meta charset="UTF-8">
+    
+    <!-- Meta Viewport yang sama untuk mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- Judul halaman dalam Bahasa Indonesia -->
     <title>Taufik - Fotografer, Retoucher, Desainer</title>
-    <meta name="description" content="Portofolio pribadi Taufik, seorang profesional kreatif dengan spesialisasi fotografi, retouching, dan desain.">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="assets/images/profile-2.png" type="image/png">
-    <link rel="apple-touch-icon" href="assets/images/profile-2.png">
+    
+    <!-- Deskripsi untuk SEO dalam Bahasa Indonesia -->
+    <meta name="description" content="Portofolio pribadi Taufik, seorang profesional kreatif di bidang fotografi, retouching, dan desain.">
+    
+    <!-- Link ke file-file aset tetap sama -->
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" href="assets/img/icon.png" type="image/png">
+    
+    <!-- Font dari Google Fonts juga tetap sama -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Menggunakan file CSS yang sama dengan halaman Inggris -->
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <header class="navbar">
-        <div class="navbar-container">
-            <div class="navbar-left">
-                <div class="navbar-logo">
-                    <a href="index-id.html">Taufik</a>
-                </div>
-                <nav class="navbar-nav" id="mobile-nav">
-                    <ul>
-                        <li><a href="index-id.html">Beranda</a></li>
-                        <li><a href="https://www.behance.net/your-username" target="_blank" rel="noopener noreferrer">Portofolio</a></li>
-                        <li><a href="https://www.linkedin.com/in/your-username" target="_blank" rel="noopener noreferrer">Tentang</a></li>
-                        <li><a href="https://example.com/services" target="_blank" rel="noopener noreferrer">Layanan</a></li>
-                        <li><a href="https://medium.com/@your-username" target="_blank" rel="noopener noreferrer">Jurnal</a></li>
-                        <li><a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer">Kontak</a></li>
-                    </ul>
-                </nav>
-            </div><div class="navbar-right">
-            <div class="navbar-toggles">
-                <div class="language-selector lang-is-id">
-                    <span class="lang-label lang-en">EN</span>
-                    <div class="lang-switch">
-                        <a href="index.html" class="switch-link">
-                            <div class="switch-thumb">
-                                <img src="https://flagcdn.com/id.svg" alt="Indonesian">
-                            </div>
-                        </a>
+
+    <!-- ======================= -->
+    <!-- BAGIAN HEADER (ATAS)    -->
+    <!-- ======================= -->
+    <header class="main-header">
+        <div class="container">
+            <a href="#" class="logo">Taufik</a>
+            
+            <!-- Navigasi Desktop dalam Bahasa Indonesia -->
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#portfolio">Portofolio</a></li>
+                    <li><a href="#about">Tentang</a></li>
+                    <li><a href="#services">Layanan</a></li>
+                    <li><a href="#journal">Jurnal</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-toggles">
+                <!-- Toggle Bahasa: PENTING! Link ini kembali ke index.html -->
+                <a href="index.html" class="lang-switch" aria-label="Ganti ke Bahasa Inggris">
+                    <div class="switch-track">
+                        <div class="switch-thumb">🇮🇩</div>
                     </div>
-                    <span class="lang-label lang-id active">ID</span>
+                </a>
+                
+                <!-- Toggle Dark/Light Mode (strukturnya sama) -->
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="theme-checkbox">
+                        <input type="checkbox" id="theme-checkbox" />
+                        <div class="slider round">
+                            <span class="sun">🌞</span>
+                            <span class="moon">🌙</span>
+                        </div>
+                    </label>
                 </div>
-
-                <div class="theme-toggle" id="theme-toggle">
-                    <svg class="icon icon-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-                    <svg class="icon icon-sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                </div>
-            </div>
-            <div class="hamburger-btn" id="hamburger-btn">
-                <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                
+                <button class="hamburger" id="hamburger-button" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </div>
+    </header>
+
+    <!-- ================================= -->
+    <!-- BAGIAN MENU MOBILE (TERSEMBUNYI)  -->
+    <!-- ================================= -->
+    <div class="mobile-menu">
+        <nav>
+            <ul>
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#portfolio">Portofolio</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#services">Layanan</a></li>
+                <li><a href="#journal">Jurnal</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </nav>
     </div>
-</header>
 
-<main>
-    <section class="hero-section">
-        <div class="hero-image-container">
-            <img src="assets/images/profile-1.png" alt="Foto Profil Taufik 1" class="hero-photo active">
-            <img src="assets/images/profile-2.png" alt="Foto Profil Taufik 2" class="hero-photo">
-            <img src="assets/images/profile-3.png" alt="Foto Profil Taufik 3" class="hero-photo">
-        </div>
-        <div class="hero-text-container">
-            <h1 class="hero-title">Hai, saya Taufik – saya seorang <span id="typing-effect"></span></h1>
-            <p class="hero-subtitle">Seorang profesional kreatif dengan spesialisasi fotografi, retouching, dan desain, yang fokus untuk memberikan estetika visual berkualitas tinggi.</p>
-            <div class="hero-cta">
-                <a href="https://www.behance.net/your-username" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Lihat Portofolio</a>
-                <a href="https://wa.me/6281234567890" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Hubungi Saya</a>
+    <!-- ======================= -->
+    <!-- KONTEN UTAMA HALAMAN    -->
+    <!-- ======================= -->
+    <main>
+        <!-- Section Hero (Profile) -->
+        <section id="home" class="hero-section">
+            <div class="container hero-container">
+                
+                <!-- Kolom Gambar (tetap sama) -->
+                <div class="hero-image-container">
+                    <img src="https://placehold.co/500x500/EBF4FF/3B82F6?text=Foto+1" alt="Foto profil Taufik 1" class="profile-pic active">
+                    <img src="https://placehold.co/500x500/D1FAE5/10B981?text=Foto+2" alt="Foto profil Taufik 2" class="profile-pic">
+                    <img src="https://placehold.co/500x500/FEF3C7/F59E0B?text=Foto+3" alt="Foto profil Taufik 3" class="profile-pic">
+                </div>
+
+                <!-- Kolom Teks (diterjemahkan ke Bahasa Indonesia) -->
+                <div class="hero-text-container">
+                    <h1>Hai, saya Taufik – seorang <span class="typing-effect"></span></h1>
+                    <p>Seorang profesional kreatif dengan spesialisasi di bidang fotografi, retouching, dan desain, yang berfokus pada estetika visual berkualitas tinggi.</p>
+                    <div class="hero-buttons">
+                        <a href="#portfolio" class="btn btn-primary">Lihat Portofolio</a>
+                        <a href="#contact" class="btn btn-secondary">Hubungi Saya</a>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
-</main>
+        </section>
+        
+        <!-- Section lain di bawahnya (diterjemahkan) -->
+        <section id="portfolio" style="height: 100vh; padding: 80px 0;"><div class="container"><h2>Bagian Portofolio</h2></div></section>
+        <section id="about" style="height: 100vh; padding: 80px 0;"><div class="container"><h2>Bagian Tentang</h2></div></section>
+        
+    </main>
 
-<script src="script-id.js"></script>
+    <!-- Menggunakan file JavaScript yang sama -->
+    <script src="assets/js/main.js"></script>
 
 </body>
 </html>
