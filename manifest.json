@@ -1,16 +1,27 @@
 {
-  "name": "Taufik Portfolio",
+  "name": "Taufik's Portfolio",
   "short_name": "Taufik",
-  "start_url": "/index.html",
+  "description": "Personal portfolio of Taufik, a creative professional specializing in photography, retouching, and design.",
+  
+  "start_url": "/index.html?source=pwa",
   "display": "standalone",
+  "orientation": "portrait",
+
   "background_color": "#ffffff",
-  "theme_color": "#ffffff",
-  "description": "Personal portfolio of Taufik, a creative professional.",
+  "theme_color": "#3b82f6",
+  
   "icons": [
     {
-      "src": "assets/images/profile-1.png",
+      "src": "assets/images/profile-2.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/imgages/profile-2.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }
