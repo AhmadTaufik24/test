@@ -87,24 +87,35 @@ body.dark-mode { --bg-color: #121212; --text-color: #e0e0e0; --secondary-btn-bg:
 
 }
 
-/* ==== FORCING DESKTOP FIX ==== */
+/* ==== FIX UNTUK DESKTOP ==== */
 @media (min-width: 993px) {
   .navbar-nav {
     display: flex !important;
   }
 
   .hero-section {
-    flex-direction: row !important;
-    text-align: left !important;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    padding: 140px 5% 5rem;
+    gap: 2rem;
   }
 
   .hero-image-container {
-    max-width: 440px !important;
-    height: 440px !important;
+    flex: 1;
+    max-width: 440px;
+    height: 440px;
+    margin-bottom: 0;
   }
 
   .hero-photo {
-    transform: scale(1.15) !important;
+    transform: scale(1.15);
+  }
+
+  .hero-text-container {
+    flex: 1.5;
+    max-width: 600px;
   }
 }
 
