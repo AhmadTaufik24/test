@@ -1,42 +1,47 @@
-// Menjalankan semua skrip hanya setelah seluruh halaman (DOM) selesai dimuat
-// Ini untuk memastikan semua elemen HTML sudah siap sebelum dimanipulasi oleh JS
+/**
+ * Menjalankan semua skrip setelah seluruh halaman (DOM) selesai dimuat.
+ * Ini memastikan semua elemen HTML sudah ada dan siap dimanipulasi.
+ */
 document.addEventListener('DOMContentLoaded', () => {
 
     /**
      * FUNGSI 1: DARK/LIGHT MODE TOGGLE
      * - Mengecek localStorage untuk tema yang tersimpan.
      * - Menerapkan tema saat halaman dimuat.
-     * - Mendengarkan perubahan pada tombol toggle.
-     * - Menyimpan preferensi tema ke localStorage.
+     * - Mengatur event listener pada tombol toggle.
+     * - Menyimpan preferensi tema ke localStorage saat diubah.
      */
     const themeToggle = document.getElementById('theme-checkbox');
     const htmlElement = document.documentElement; // Targetnya adalah tag <html>
 
-    // Cek tema yang tersimpan di localStorage saat pertama kali buka halaman
+    // Fungsi untuk menerapkan tema berdasarkan input
+    const applyTheme = (theme) => {
+        htmlElement.setAttribute('data-theme', theme);
+        if (theme === 'dark') {
+            themeToggle.checked = true;
+        } else {
+            themeToggle.checked = false;
+        }
+    };
+
+    // Cek tema yang tersimpan saat pertama kali membuka halaman
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
-        htmlElement.setAttribute('data-theme', savedTheme);
-        if (savedTheme === 'dark') {
-            themeToggle.checked = true;
-        }
+        applyTheme(savedTheme);
     }
 
-    // Tambahkan event listener untuk tombol toggle
+    // Event listener untuk tombol toggle tema
     themeToggle.addEventListener('change', () => {
-        if (themeToggle.checked) {
-            htmlElement.setAttribute('data-theme', 'dark');
-            localStorage.setItem('theme', 'dark'); // Simpan pilihan ke localStorage
-        } else {
-            htmlElement.setAttribute('data-theme', 'light');
-            localStorage.setItem('theme', 'light'); // Simpan pilihan ke localStorage
-        }
+        const newTheme = themeToggle.checked ? 'dark' : 'light';
+        applyTheme(newTheme);
+        localStorage.setItem('theme', newTheme); // Simpan pilihan baru
     });
 
 
     /**
      * FUNGSI 2: SLIDESHOW GAMBAR PROFIL
      * - Mengambil semua gambar profil.
-     * - Mengganti gambar setiap beberapa detik secara otomatis.
+     * - Mengganti kelas 'active' untuk menampilkan gambar berikutnya secara berkala.
      */
     const profilePics = document.querySelectorAll('.profile-pic');
     if (profilePics.length > 0) {
@@ -44,23 +49,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const slideInterval = 4000; // Ganti gambar setiap 4 detik
 
         setInterval(() => {
-            profilePics[currentPicIndex].classList.remove('active'); // Sembunyikan gambar lama
-            currentPicIndex = (currentPicIndex + 1) % profilePics.length; // Pindah ke index berikutnya
-            profilePics[currentPicIndex].classList.add('active'); // Tampilkan gambar baru
+            profilePics[currentPicIndex].classList.remove('active');
+            currentPicIndex = (currentPicIndex + 1) % profilePics.length;
+            profilePics[currentPicIndex].classList.add('active');
         }, slideInterval);
     }
 
 
     /**
      * FUNGSI 3: EFEK KETIK (TYPING EFFECT)
-     * - Cek bahasa halaman (ID atau EN) dari tag <html lang="...">.
-     * - Menyiapkan array teks yang sesuai dengan bahasa.
-     * - Mengetik dan menghapus teks secara berulang.
+     * - Mendeteksi bahasa halaman dari atribut 'lang' di tag <html>.
+     * - Memilih set teks yang benar (Inggris atau Indonesia).
+     * - Menjalankan animasi mengetik dan menghapus secara berulang.
      */
     const typingElement = document.querySelector('.typing-effect');
     if (typingElement) {
         let roles;
-        // Cek atribut 'lang' pada tag <html> untuk menentukan bahasa
+        // Cek bahasa halaman
         if (document.documentElement.lang === 'id') {
             roles = ["Fotografer", "Retoucher", "Desainer"];
         } else {
@@ -70,83 +75,53 @@ document.addEventListener('DOMContentLoaded', () => {
         let roleIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
-        const typingSpeed = 150;
-        const deletingSpeed = 100;
-        const delayBetweenRoles = 2000;
-
+        
         function type() {
             const currentRole = roles[roleIndex];
-            let newText = '';
+            const typeSpeed = isDeleting ? 100 : 150;
 
-            if (isDeleting) {
-                // Proses menghapus
-                newText = currentRole.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                // Proses mengetik
-                newText = currentRole.substring(0, charIndex + 1);
+            // Mengetik atau menghapus teks
+            typingElement.textContent = currentRole.substring(0, charIndex);
+
+            if (!isDeleting) {
                 charIndex++;
+            } else {
+                charIndex--;
             }
 
-            typingElement.textContent = newText;
-
-            // Logika untuk ganti state (mengetik -> menghapus -> ganti kata)
-            if (!isDeleting && charIndex === currentRole.length) {
-                // Selesai mengetik, mulai menghapus setelah jeda
+            // Logika untuk mengubah state
+            if (!isDeleting && charIndex === currentRole.length + 1) {
+                // Selesai mengetik, tunggu, lalu mulai hapus
                 isDeleting = true;
-                setTimeout(type, delayBetweenRoles);
-            } else if (isDeleting && charIndex === 0) {
-                // Selesai menghapus, ganti kata dan mulai mengetik lagi
+                setTimeout(type, 2000); // Jeda sebelum menghapus
+            } else if (isDeleting && charIndex === -1) {
+                // Selesai menghapus, ganti kata, mulai ketik lagi
                 isDeleting = false;
                 roleIndex = (roleIndex + 1) % roles.length;
-                setTimeout(type, 500);
+                setTimeout(type, 500); // Jeda sebelum mengetik kata baru
             } else {
-                // Lanjutkan mengetik/menghapus
-                setTimeout(type, isDeleting ? deletingSpeed : typingSpeed);
+                // Lanjutkan animasi
+                setTimeout(type, typeSpeed);
             }
         }
         
-        type(); // Mulai efek ketik
+        type(); // Panggil fungsi untuk pertama kali
     }
 
 
     /**
      * FUNGSI 4: MENU HAMBURGER UNTUK MOBILE
-     * - Mengatur buka/tutup menu saat tombol hamburger di-klik.
+     * - Mengatur buka/tutup panel menu saat tombol hamburger di-klik.
      */
     const hamburgerBtn = document.getElementById('hamburger-button');
     const mobileMenu = document.querySelector('.mobile-menu');
 
     if (hamburgerBtn && mobileMenu) {
         hamburgerBtn.addEventListener('click', () => {
-            // Toggle class 'active' untuk mengubah ikon hamburger (X) dan menampilkan menu
+            // Menambahkan/menghapus kelas 'active' untuk animasi ikon dan panel
             hamburgerBtn.classList.toggle('active');
             mobileMenu.classList.toggle('active');
         });
-
-        // Bonus: Tutup menu jika salah satu link di dalam menu mobile di-klik
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburgerBtn.classList.remove('active');
-                mobileMenu.classList.remove('active');
-            });
-        });
     }
-    
-    
-    /**
-     * FUNGSI 5: ANIMASI SAAT SCROLL (Intersection Observer)
-     * - Untuk memberikan efek zoom/fade-in pada section profile.
-     * - CSS untuk ini akan kita tambahkan nanti.
-     */
-    // (Fungsi ini akan ditambahkan jika kita ingin efek scroll yang lebih kompleks,
-    // untuk saat ini, kita biarkan kosong karena efek dasar sudah diatur di CSS)
-
-
-    /**
-     * FUNGSI 6: TOMBOL "SCROLL TO TOP"
-     * - Akan muncul jika user sudah scroll ke bawah.
-     */
-    // (Fitur ini juga akan kita tambahkan nanti jika diperlukan, sesuai permintaan opsional)
 
 });
